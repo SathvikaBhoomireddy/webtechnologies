@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artificial Intelligence</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+            max-width: 600px;
+            
+        }
+        
+        
+        .container p {
+            font-size: 1.1em;
+        }
+        .container .info {
+            margin: 10px ;
+            padding: 10px;
+            background: #efefef;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="ai-info"
+         data-name="Artificial Intelligence"
+         data-description="Artificial Intelligence (AI) is a field of computer science focused on creating systems capable of performing tasks that normally require human intelligence."
+         data-key-features="Machine Learning, Neural Networks, Natural Language Processing, Robotics"
+         data-use-cases="Autonomous Vehicles, Virtual Assistants, Predictive Analytics, Healthcare Diagnostics">
+        <h2>About <span id="ai-name"></span></h2>
+        <p id="ai-description"></p>
+        <div class="info">
+            <strong>Key Features:</strong>
+            <p id="ai-key-features"></p>
+        </div>
+        <div class="info">
+            <strong>Use Cases:</strong>
+            <p id="ai-use-cases"></p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const aiInfo = document.getElementById('ai-info');
+            const name = aiInfo.getAttribute('data-name');
+            const description = aiInfo.getAttribute('data-description');
+            const keyFeatures = aiInfo.getAttribute('data-key-features');
+            const useCases = aiInfo.getAttribute('data-use-cases');
+            document.getElementById('ai-name').textContent = name;
+            document.getElementById('ai-description').textContent = description;
+            document.getElementById('ai-key-features').textContent = keyFeatures;
+            document.getElementById('ai-use-cases').textContent = useCases;
+        });
+    </script>
+</body>
+</html>

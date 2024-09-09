@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <style>
+        body, h1, h2, h3, p, ul, li {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+         body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: white;
+            color: black;
+        }
+
+        header {
+            background:black;
+            color:white;
+            padding: 1rem 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        header nav ul li a {
+            color:white;
+            text-decoration: none;
+        }
+
+        header h1 {
+            
+            font-size: 2rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+        }
+
+        section {
+            padding: 2rem;
+            margin: 5rem auto 2rem auto;
+            max-width: 800px;
+        }
+
+        section h2 {
+            border-bottom: 2px solid pink;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .work-item {
+            margin-bottom: 1.5rem;
+        }
+        footer {
+            background: black;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>About Me</li>
+                <li>Skills</li>
+                <li>Work Examples</li>
+                <li>Contact</li>
+            </ul>
+        </nav>
+        <h1>BHOOMIREDDY SATHVIKA</h1>
+        <p>Welcome to my personal portfolio</p>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hello! I'm Sathvika, a Web developer intern. I am passionate about web development.</p>
+        <p>I am in Btech 3rd Year.I am from Kadapa. I am studying in Mohan Babu University</p>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>Java</li>
+            <li>Html and Css</li>
+            <li>Java Script</li>
+        </ul>
+    </section>
+
+    <section id="work">
+        <h2>Work Samples</h2>
+        <div class="work-item">
+            <h3>Gas Agency System</h3>
+            <p>Web based application that provides an interface for handling gas orders, customer details, and staff information</p>
+            <a href="https://github.com/SathvikaBhoomireddy/Gas-agency-system" target="_blank">View Project</a>
+        </div>
+        <div class="work-item">
+            <h3>Clinic Management System</h3>
+            <p> Web based application that provides a user-friendly interface for handling appointments, 
+                managing patient records, and organizing staff details, enhancing overall clinic efficiency and coordination.</p>
+            <a href="https://github.com/SathvikaBhoomireddy/Clinicmanagementsystem/blob/main/Clinic%20management%20system" target="_blank">View Project</a>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>If you'd like to get in touch, please reach out via the following methods:</p>
+        <ul>
+            <li>Email: <a href="sathvika.b.64@gmail.com">your.email@example.com</a></li>
+            <li>LinkedIn: <a href="https://www.linkedin.com/in/sathvika-bhoomireddy-6b4282312?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">Your LinkedIn</a></li>
+            <li>GitHub: <a href="https://github.com/SathvikaBhoomireddy" target="_blank">Your GitHub</a></li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Your Name. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

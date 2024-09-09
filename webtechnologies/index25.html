@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Report Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+           
+        }
+
+        .container {
+            width: 80%;
+           
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 200px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 45%;
+        }
+
+        #forecast-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .forecast-day {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            width: 100px;
+            text-align: center;
+        }
+
+        .forecast-day img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Weather Report Dashboard</h1>
+            <input type="text" id="city" placeholder="Enter city" />
+            <button onclick="getWeather()">Get Weather</button>
+        </header>
+        <main>
+            <section id="current-weather">
+                <h2>Current Weather</h2>
+                <p id="city-name"></p>
+                <p id="temperature"></p>
+                <p id="weather-description"></p>
+                <img id="weather-icon" src="" alt="Weather Icon">
+            </section>
+            <section id="forecast">
+                <h2>7-Day Forecast</h2>
+                <div id="forecast-container"></div>
+            </section>
+        </main>
+    </div>
+    <script>
+        const apiKey = 'YOUR_API_KEY'; 
+        const weatherUrl = 'https://api.openweathermap.org/data/2.5/weather';
+        const forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast/daily';
+
+        async function getWeather() {
+            const city = document.getElementById('city').value;
+            const currentWeather = await fetch(`${weatherUrl}?q=${city}&appid=${apiKey}&units=metric`);
+            const weatherData = await currentWeather.json();
+
+            if (weatherData.cod === 200) {
+                document.getElementById('city-name').textContent = `${weatherData.name}, ${weatherData.sys.country}`;
+                document.getElementById('temperature').textContent = `Temperature: ${weatherData.main.temp}°C`;
+                document.getElementById('weather-description').textContent = weatherData.weather[0].description;
+                document.getElementById('weather-icon').src = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`;
+                getForecast(city);
+            } else {
+                alert('City not found');
+            }
+        }
+
+        async function getForecast(city) {
+            const forecastData = await fetch(`${forecastUrl}?q=${city}&cnt=7&appid=${apiKey}&units=metric`);
+            const forecastJson = await forecastData.json();
+            const forecastContainer = document.getElementById('forecast-container');
+            forecastContainer.innerHTML = '';
+
+            forecastJson.list.forEach(day => {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'forecast-day';
+                dayElement.innerHTML = `
+                    <p>${new Date(day.dt * 1000).toLocaleDateString()}</p>
+                    <p>${day.temp.day}°C</p>
+                    <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}.png" alt="Weather Icon">
+                    <p>${day.weather[0].description}</p>
+                `;
+                forecastContainer.appendChild(dayElement);
+            });
+        }
+    </script>
+</body>
+</html>

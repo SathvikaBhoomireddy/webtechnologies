@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Example</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="800" height="600"></canvas>
+    <script>
+        window.onload = function() {
+            
+            const canvas = document.getElementById('myCanvas');
+            const c = canvas.getContext('2d');
+            
+            
+            c.fillStyle = 'blue';
+            c.fillRect(50, 50, 150, 100);
+
+
+            c.beginPath();
+            c.arc(300, 150, 75, 0, Math.PI * 2, false);
+            c.fillStyle = 'red';
+            c.fill();
+            c.strokeStyle = 'black';
+            c.stroke();
+            
+
+            c.beginPath();
+            c.moveTo(50, 250);
+            c.lineTo(200, 250);
+            c.strokeStyle = 'green';
+            c.lineWidth = 5;
+            c.stroke();
+
+
+            c.font = '30px Arial';
+            c.fillStyle = 'black';
+            c.fillText('Hello Canvas!', 50, 350);
+        };
+    </script>
+</body>
+</html>
